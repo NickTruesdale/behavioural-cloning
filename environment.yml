@@ -1,0 +1,26 @@
+name: behavioural-cloning
+channels:
+  - https://conda.anaconda.org/menpo
+  - conda-forge
+dependencies:
+  - python=3.7
+  - pylint
+  - jupyter
+  - numpy
+  - scipy
+  - pandas
+  - scikit-learn
+  - scikit-image
+  - matplotlib
+  - h5py
+  - opencv3
+  - pillow
+  - eventlet
+  - flask-socketio
+  - seaborn
+  - imageio
+  - pip
+  - pip:
+      - moviepy
+      - tensorflow
+      - keras
