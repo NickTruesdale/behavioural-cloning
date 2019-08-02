@@ -4,8 +4,15 @@ channels:
   - conda-forge
 dependencies:
   - python=3.7
-  - pylint
-  - jupyter
+  - pip
+  - python-dotenv
+
+  # Server packages
+  - uvicorn
+  - eventlet
+  - flask-socketio
+
+  # Model packages
   - numpy
   - scipy
   - pandas
@@ -13,14 +20,10 @@ dependencies:
   - scikit-image
   - matplotlib
   - h5py
-  - opencv3
-  - pillow
-  - eventlet
-  - flask-socketio
-  - seaborn
-  - imageio
-  - pip
+  
+  # Pip dependencies
   - pip:
+      - fastapi
       - moviepy
       - tensorflow
       - keras

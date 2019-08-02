@@ -2,13 +2,15 @@
 This module implements a Keras CNN.
 '''
 
+import os
 from typing import List
 
+import pandas as pd
 from sklearn.model_selection import train_test_split
 
 from keras.models import Sequential
 from keras.layers import Lambda, Conv2D, Dropout, Dense, Flatten, Activation, BatchNormalization
-from keras.activation import elu
+from keras.activations import elu
 #from keras.optimizers import Adam
 
 # Options - move to a config or .env file at some point
@@ -35,7 +37,7 @@ def create_model(dropout: float = 0.5):
     layers do steering prediction. ELU is used to solve the vanishing gradient problem.
     '''
     
-    def add_activation_and_bn(layer):
+    def process_layer(layer):
         '''
         For each layer that can take an activation function, assign the ELU function and add a
         Batch Normalization layer after to help keep training time down.
@@ -72,7 +74,8 @@ def load_data():
     Load training data and split it into training and validation set
     """
     #reads CSV file into a single dataframe variable
-    data_file = os.path.join(os.getcwd(), args.data_dir, 'driving_log.csv')
+    data_dir = '../data'
+    data_file = os.path.join(os.getcwd(), data_dir, 'driving_log.csv')
     column_names = ['center', 'left', 'right', 'steering', 'throttle', 'reverse', 'speed']
     
     data_df = pd.read_csv(data_file, names=column_names)
